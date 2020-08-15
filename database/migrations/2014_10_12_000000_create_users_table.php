@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('whatsapp', 20)->nullable();
             $table->text('avatar')->nullable();
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->string('city');
             $table->string('state', 2);
             $table->boolean('active');
