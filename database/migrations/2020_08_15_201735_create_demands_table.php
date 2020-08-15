@@ -21,13 +21,13 @@ class CreateDemandsTable extends Migration
             $table->decimal('value', 5, 2);
             $table->dateTime('expires_on')->nullable();
             $table->boolean('active');
-            $table->unsignedBigInteger('organization_id');
-            $table->timestamps();
-            $table->softDeletes('deleted_at', 0);
 
             $table->foreignId('organization_id')
                 ->constrained()
                 ->onDelete('cascade');
+
+            $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 
