@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('state', 2);
             $table->boolean('active')->default(true);
+            $table->tinyInteger('access_level')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
