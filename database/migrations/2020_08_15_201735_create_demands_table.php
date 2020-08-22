@@ -20,7 +20,7 @@ class CreateDemandsTable extends Migration
             $table->text('image')->nullable();
             $table->decimal('value', 5, 2);
             $table->dateTime('expires_on')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
 
             $table->foreignId('organization_id')
                 ->constrained()

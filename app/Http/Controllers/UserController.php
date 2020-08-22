@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -65,11 +67,21 @@ class UserController extends Controller
         $validator = Validator::make($received_data, $this->validation_rules);
 
         if (!$validator->fails()) {
+            $received_data['password'] = Hash::make($received_data['password']);
+
+            $user = new User($received_data);
+
+            if ($user->save()) {
+                return response()->json([
+                    'action' => 'store',
+                    'user' => $user
+                ]);
+            }
+
             return response()->json([
                 'action' => 'store',
-                'success' => true,
-                'data' => $received_data
-            ]);
+                'error' => 'Unable to save the user'
+            ], 500);
         }
 
         return response()->json($validator->errors(), 400);

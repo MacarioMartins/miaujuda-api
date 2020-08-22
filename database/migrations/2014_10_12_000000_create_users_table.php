@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('city');
             $table->string('state', 2);
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
