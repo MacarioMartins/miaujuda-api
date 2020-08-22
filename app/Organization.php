@@ -16,7 +16,14 @@ class Organization extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'whatsapp',
+        'avatar',
+        'description',
+        'city',
+        'state',
     ];
 
     /**
